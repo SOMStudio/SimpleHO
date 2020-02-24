@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981768c7c24c6e244b80b12e2ca22858, type: 3}
+  m_Name: LevelListDataTemplate
+  m_EditorClassIdentifier: 
+  data:
+  - nameScene: Level0
+    typeLevel: 0
+    timeLimit: 1
+    timeForLimit: 30
+    lifeLevel: 1
+    itemsName:
+    - medication
+    - thermometer
+    - stethoscope
+  - nameScene: Level0
+    typeLevel: 1
+    timeLimit: 1
+    timeForLimit: 45
+    lifeLevel: 1
+    itemsName:
+    - medication
+    - thermometer
+    - stethoscope
