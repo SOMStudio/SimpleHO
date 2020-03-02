@@ -2,20 +2,19 @@
 Simple Hidden Objects
 
 ## Task:
-Сделать базовую механику игры в жанре “Hidden objects”:
+- Make the basic mechanics of the game in the genre “Hidden objects”:
 https://apps.apple.com/us/app/find-hidden-objects-in-picture/id1465691296
 
-Требования:
-Собрать игровую сцену с предметами, которые нужно найти.
-Сделать верхнюю панель с предметами для поиска на игровой сцене.
-По тапу на найденный предмет на сцене, он должен быть подсвечен и анимировано  перемещен на соответствующее место в панеле предметов с любым визуальным эффектом.
-Реализовать режим поиска в темноте (затемненный фон, за перемещением пальца должен следовать круглый “просвет” в этом фоне).
-Игра должна содержать сцену меню и геймплея.
-В сцене геймплея должен быть таймер. По истечению времени (30 сек) игрок проигрывает.
-Должен быть попап победы или поражения.
-Сохранение очков между сессиями (начисление произвольно).
-Игра должна выглядеть адекватно на разных соотношениях сторон экрана.
-Использовать шрифт, который находится в папке с assets.
+Assemble a game scene with items to be found.
+Make the top panel with items to search for in the game scene.
+Tap on the found object on the stage, it should be highlighted and animatedly moved to the appropriate place in the objects panel with any visual effect.
+Implement the search mode in the dark (darkened background, a circular “gap” in this background should follow the movement of the finger).
+The game should contain a menu scene and gameplay.
+There must be a timer in the gameplay scene. At the end of time (30 sec) the player loses.
+There must be a popup of victory or defeat.
+Saving points between sessions (accrual at random).
+The game should look adequate at different aspect ratios.
+Use the font that is in the assets folder.
 
 ## Implemented:
 All
@@ -25,3 +24,7 @@ Additionally:
 + TextMeshPro - for text
 + DOTween (free) - for move Ui, objects in game (https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
 + PathCreator (free) - for move item by spline (https://assetstore.unity.com/packages/tools/utilities/b-zier-path-creator-136082)
+
+## Unity 19.2.8
+
+![Orbitality](screenshot.png)
