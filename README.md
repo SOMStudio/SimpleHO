@@ -25,6 +25,6 @@ Additionally:
 + DOTween (free) - for move Ui, objects in game (https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
 + PathCreator (free) - for move item by spline (https://assetstore.unity.com/packages/tools/utilities/b-zier-path-creator-136082)
 
-## Unity 19.2.8
+## Unity 2019
 
 ![Orbitality](screenshot.png)
