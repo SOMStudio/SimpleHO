@@ -11,12 +11,12 @@ namespace Game
 
 		private ISaveSystem fileSaveSystem;
 
-		private bool dataWasRead = false;
-		private bool dataNeedWrite = false;
+		private bool dataWasRead;
+		private bool dataNeedWrite;
 
-		private bool highScoreShowInLevel = false;
-		
-		void Awake()
+		private bool highScoreShowInLevel;
+
+		private void Awake()
 		{
 			if (!Instance)
 			{
@@ -28,7 +28,7 @@ namespace Game
 			}
 
 			string fileName = $"{Application.persistentDataPath}/playerData_{gamePrefsName}.dat";
-			
+
 			fileSaveSystem = new FileSaveSystem(fileName);
 		}
 
@@ -39,7 +39,7 @@ namespace Game
 			if (GameController.Instance)
 			{
 				score.AddListener(CheckHighScore);
-					
+
 				health.AddListener(GameController.Instance.CheckLifePlayer);
 			}
 		}
@@ -91,10 +91,7 @@ namespace Game
 		{
 			highScoreShowInLevel = false;
 		}
-
-		/// <summary>
-		/// save player data in file with encrypting, not use for Web-application (web can't write file)
-		/// </summary>
+		
 		public void SavePrivateDataPlayer()
 		{
 			if (dataWasRead)
@@ -116,10 +113,7 @@ namespace Game
 				LoadPrivateDataPlayer();
 			}
 		}
-
-		/// <summary>
-		/// restore player data from encrypting file.
-		/// </summary>
+		
 		public void LoadPrivateDataPlayer()
 		{
 			if (!dataWasRead)

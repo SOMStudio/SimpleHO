@@ -12,7 +12,7 @@ namespace Base.SaveSystem
         {
             this.filePath = filePath;
         }
-        
+
         public void Save<T>(T data) where T : class
         {
             using (FileStream writer = File.Create(filePath))
@@ -31,7 +31,7 @@ namespace Base.SaveSystem
                 using (FileStream reader = File.Open(filePath, FileMode.Open))
                 {
                     BinaryFormatter bf = new BinaryFormatter();
-                    data = (T) bf.Deserialize(reader);
+                    data = (T)bf.Deserialize(reader);
                 }
 
                 return true;

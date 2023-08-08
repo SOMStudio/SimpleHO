@@ -7,10 +7,7 @@ namespace Base.Input.InputImplementation
     {
         protected Dictionary<string, KeyCode> keyBindings = new Dictionary<string, KeyCode>();
 
-        public Dictionary<string, KeyCode> KeyBindings
-        {
-            get { return keyBindings; }
-        }
+        public Dictionary<string, KeyCode> KeyBindings => keyBindings;
 
         public InputBindings()
         {

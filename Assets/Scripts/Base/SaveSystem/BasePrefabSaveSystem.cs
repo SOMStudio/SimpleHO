@@ -6,10 +6,11 @@ namespace Base.SaveSystem
 {
     public class BasePrefabSaveSystem : MonoBehaviour
     {
-        public bool didInit = false;
+        public bool didInit;
 
-        [Header("Base Settings")] public string gamePrefsName = "DefaultGame";
-        
+        [Header("Base Settings")]
+        public string gamePrefsName = "DefaultGame";
+
         [SerializeField] protected float audioSoundSliderValue;
         [SerializeField] private Slider audioSoundSlider;
         public event UnityAction ChangeSoundValueEvent;
@@ -17,12 +18,12 @@ namespace Base.SaveSystem
         [SerializeField] protected float audioMusicSliderValue;
         [SerializeField] private Slider audioMusicSlider;
         public event UnityAction ChangeMusicValueEvent;
-        
+
         [SerializeField] protected float graphicsSliderValue;
         [SerializeField] private Slider graphicsSlider;
         [SerializeField] private int graphicsDefaultValue = -1;
         public event UnityAction ChangeGraphicsValueEvent;
-        
+
         private int detailLevels = 6;
         private bool needSaveOptions = false;
 
@@ -50,7 +51,7 @@ namespace Base.SaveSystem
 
         private void RestoreSFXValue()
         {
-            string stKey = string.Format("{0}_SFXVol", gamePrefsName);
+            string stKey = $"{gamePrefsName}_SFXVol";
             if (PlayerPrefs.HasKey(stKey))
             {
                 audioSoundSliderValue = PlayerPrefs.GetFloat(stKey);
@@ -59,7 +60,7 @@ namespace Base.SaveSystem
             {
                 audioSoundSliderValue = 1;
             }
-            
+
             if (audioSoundSlider != null)
             {
                 audioSoundSlider.value = audioSoundSliderValue;
@@ -68,7 +69,7 @@ namespace Base.SaveSystem
 
         private void RestoreMusicValue()
         {
-            string stKey = string.Format("{0}_MusicVol", gamePrefsName);
+            string stKey = $"{gamePrefsName}_MusicVol";
             if (PlayerPrefs.HasKey(stKey))
             {
                 audioMusicSliderValue = PlayerPrefs.GetFloat(stKey);
@@ -77,7 +78,7 @@ namespace Base.SaveSystem
             {
                 audioMusicSliderValue = 1;
             }
-            
+
             if (audioMusicSlider != null)
             {
                 audioMusicSlider.value = audioMusicSliderValue;
@@ -86,15 +87,20 @@ namespace Base.SaveSystem
 
         private void RestoreGraphicsValue()
         {
-            string stKey = string.Format("{0}_GraphicsDetail", gamePrefsName);
-            if (PlayerPrefs.HasKey (stKey)) {
-                graphicsSliderValue = PlayerPrefs.GetFloat (stKey);
-            } else {
-                if (graphicsDefaultValue == -1) {
+            string stKey = $"{gamePrefsName}_GraphicsDetail";
+            if (PlayerPrefs.HasKey(stKey))
+            {
+                graphicsSliderValue = PlayerPrefs.GetFloat(stKey);
+            }
+            else
+            {
+                if (graphicsDefaultValue == -1)
+                {
                     string[] names = QualitySettings.names;
                     detailLevels = names.Length;
 
-                    switch (Application.platform) {
+                    switch (Application.platform)
+                    {
                         case RuntimePlatform.Android:
                         case RuntimePlatform.IPhonePlayer:
                             graphicsSliderValue = 2;
@@ -103,18 +109,21 @@ namespace Base.SaveSystem
                             graphicsSliderValue = detailLevels;
                             break;
                     }
-                } else {
+                }
+                else
+                {
                     graphicsSliderValue = graphicsDefaultValue;
                 }
             }
 
-            #if UNITY_EDITOR
-            Debug.Log ("quality=" + graphicsSliderValue);
-            #endif
+#if UNITY_EDITOR
+            Debug.Log("quality=" + graphicsSliderValue);
+#endif
 
-            SetQuality ();
-            
-            if (graphicsSlider != null) {
+            SetQuality();
+
+            if (graphicsSlider != null)
+            {
                 string[] namesQlt = QualitySettings.names;
                 graphicsSlider.maxValue = namesQlt.Length - 1;
 
@@ -133,24 +142,24 @@ namespace Base.SaveSystem
 
         private void SetQuality()
         {
-            QualitySettings.SetQualityLevel ((int)graphicsSliderValue, true);
+            QualitySettings.SetQualityLevel((int)graphicsSliderValue, true);
         }
 
         private void SaveSoundValue()
         {
-            string stKey = string.Format("{0}_SFXVol", gamePrefsName);
+            string stKey = $"{gamePrefsName}_SFXVol";
             PlayerPrefs.SetFloat(stKey, audioSoundSliderValue);
         }
 
         private void SaveMusicValue()
         {
-            string stKey = string.Format("{0}_MusicVol", gamePrefsName);
+            string stKey = $"{gamePrefsName}_MusicVol";
             PlayerPrefs.SetFloat(stKey, audioMusicSliderValue);
         }
 
         private void SaveGraphicsValue()
         {
-            string stKey = string.Format("{0}_GraphicsDetail", gamePrefsName);
+            string stKey = $"{gamePrefsName}_GraphicsDetail";
             PlayerPrefs.SetFloat(stKey, graphicsSliderValue);
         }
 
@@ -161,29 +170,31 @@ namespace Base.SaveSystem
             if (didInit)
             {
                 SaveSoundValue();
-                
+
                 ChangeSoundValueEvent?.Invoke();
             }
         }
-        
-        public void ChangeMusicVal(float val) {
+
+        public void ChangeMusicVal(float val)
+        {
             audioMusicSliderValue = val;
 
             if (didInit)
             {
                 SaveMusicValue();
-                
+
                 ChangeMusicValueEvent?.Invoke();
             }
         }
 
-        public void ChangeGraphicsVal(float val) {
+        public void ChangeGraphicsVal(float val)
+        {
             graphicsSliderValue = val;
 
             if (didInit)
             {
                 SaveGraphicsValue();
-                
+
                 ChangeGraphicsValueEvent?.Invoke();
             }
         }

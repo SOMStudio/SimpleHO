@@ -4,52 +4,55 @@ using UnityEngine;
 namespace Base.Music
 {
 	[AddComponentMenu("Base/Music Clip")]
-	public class MusicClipManager : MonoBehaviour {
-
+	public class MusicClipManager : MonoBehaviour
+	{
 		[Header("Main")]
-		[SerializeField] private string gamePrefsName= "DefaultGame";
-		
+		[SerializeField] private string gamePrefsName = "DefaultGame";
+
 		[SerializeField] private AudioClip music;
-		[SerializeField] private bool loopMusic = false;
+		[SerializeField] private bool loopMusic;
 		[SerializeField] private float fadeTime = 5f;
-	
+
 		private AudioSource source;
 		private GameObject sourceGO;
 
 		private float volumePrefs;
 		private float targetVolume;
 
-		private bool playClip = false;
+		private bool playClip;
 
 		[Header("Start game")]
-		public bool playAtStart = false;
+		public bool playAtStart;
 
 		[Header("Information")]
-		[SerializeField] [Range(0, 1)]  private float volume;
+		[SerializeField] [Range(0, 1)] private float volume;
 
-		private void Awake ()
+		private void Awake()
 		{
-			string stKey = string.Format ("{0}_MusicVol", gamePrefsName);
-			if (PlayerPrefs.HasKey (stKey)) {
-				volumePrefs = PlayerPrefs.GetFloat (stKey);
-			} else {
-				volumePrefs = 0.5f;
+			string stKey = $"{gamePrefsName}_MusicVol";
+			if (PlayerPrefs.HasKey(stKey))
+			{
+				volumePrefs = PlayerPrefs.GetFloat(stKey);
 			}
-			
-			sourceGO = new GameObject ("Music_" + music.name);
-			source = sourceGO.AddComponent<AudioSource> ();
+			else
+			{
+				volumePrefs = 0.2f;
+			}
+
+			sourceGO = new GameObject("Music_" + music.name);
+			source = sourceGO.AddComponent<AudioSource>();
 			source.name = "Music_" + music.name;
 			source.playOnAwake = playAtStart;
 			source.clip = music;
 			source.volume = volume;
-			DontDestroyOnLoad (sourceGO);
-			
+			DontDestroyOnLoad(sourceGO);
+
 			playClip = playAtStart;
-			
+
 			FadeIn();
 		}
 
-		private void Update ()
+		private void Update()
 		{
 			if (playClip)
 			{
@@ -63,7 +66,7 @@ namespace Base.Music
 					playClip = false;
 				}
 			}
-			
+
 			if (fadeTime > 0.0f)
 			{
 				if (Math.Abs(volume - targetVolume) > 0.01f)
@@ -73,11 +76,13 @@ namespace Base.Music
 				}
 			}
 		}
-	
-		public void UpdateVolume () {
-			if (source) {
-				volumePrefs = PlayerPrefs.GetFloat (string.Format ("{0}_MusicVol", gamePrefsName));
-				
+
+		public void UpdateVolume()
+		{
+			if (source)
+			{
+				volumePrefs = PlayerPrefs.GetFloat($"{gamePrefsName}_MusicVol");
+
 				volume = source.volume;
 				targetVolume = volumePrefs;
 			}
@@ -88,7 +93,7 @@ namespace Base.Music
 			if (!playClip)
 			{
 				playClip = true;
-				
+
 				FadeIn();
 			}
 		}
@@ -98,12 +103,12 @@ namespace Base.Music
 			if (playClip)
 			{
 				playClip = false;
-				
+
 				FadeOut();
 			}
 		}
 
-		private void FadeIn ()
+		private void FadeIn()
 		{
 			if (fadeTime > 0.0f)
 				volume = 0.0f;
@@ -114,7 +119,7 @@ namespace Base.Music
 			source.volume = volume;
 		}
 
-		private void FadeOut ()
+		private void FadeOut()
 		{
 			if (fadeTime > 0.0f)
 				volume = source.volume;
@@ -125,7 +130,8 @@ namespace Base.Music
 			source.volume = volume;
 		}
 
-		public bool IsPlaying () {
+		public bool IsPlaying()
+		{
 			return source.isPlaying;
 		}
 	}

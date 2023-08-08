@@ -1,20 +1,17 @@
 ﻿using Base;
 using Base.Sound;
-using Base.Utility;
-using Game.SaveSystem;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Game
 {
     public class MenuManager : BaseMenuManager
     {
         [Header("Level List")]
-        [SerializeField] protected bool useLevelListWindow = false;
+        [SerializeField] protected bool useLevelListWindow;
 
-        private bool _cursorIsOverGameUi = false;
-        
+        private bool _cursorIsOverGameUi;
+
         [System.NonSerialized] public static MenuManager Instance;
 
         private void Awake()
@@ -25,10 +22,10 @@ namespace Game
             }
             else
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
-        
+
         private void Start()
         {
             InitMenu();
@@ -44,21 +41,21 @@ namespace Game
 
         private void InitMenu()
         {
-            
+
         }
 
         #region OverrideEvents
         protected override void ActivateWindowEvent()
         {
             base.ActivateWindowEvent();
-            
+
             DisActivateGameInterface();
         }
 
         protected override void ChangeWindowEvent(int number)
         {
             base.ChangeWindowEvent(number);
-            
+
             SoundManager.Instance?.PlaySoundByIndex(0, Vector3.zero);
         }
 
@@ -73,21 +70,21 @@ namespace Game
         protected override void ActivateConsoleWEvent()
         {
             base.ActivateConsoleWEvent();
-            
+
             DisActivateGameInterface();
         }
 
         protected override void ChangeConsoleWEvent(int number)
         {
             base.ChangeConsoleWEvent(number);
-            
+
             SoundManager.Instance?.PlaySoundByIndex(0, Vector3.zero);
         }
 
         protected override void DisActivateConsoleWEvent()
         {
             base.DisActivateConsoleWEvent();
-            
+
             if (!IsMenuActive())
                 ActivateGameInterface();
         }
@@ -95,47 +92,34 @@ namespace Game
         public override void ConsoleWinMessage_ButtonOk()
         {
             base.ConsoleWinMessage_ButtonOk();
-            
+
             SoundManager.Instance?.PlaySoundByIndex(1, Vector3.zero);
         }
 
         public override void ConsoleWinYesNo_ButtonNo()
         {
             base.ConsoleWinYesNo_ButtonNo();
-            
+
             SoundManager.Instance?.PlaySoundByIndex(1, Vector3.zero);
         }
 
         public override void ConsoleWinYesNo_ButtonYes()
         {
             base.ConsoleWinYesNo_ButtonYes();
-            
+
             SoundManager.Instance?.PlaySoundByIndex(1, Vector3.zero);
         }
-        
-        protected override void ActivateGameWEvent()
-        {
-            base.ActivateGameWEvent();
-            
-        }
 
-        protected override void DisActivateGameWEvent()
-        {
-            base.DisActivateGameWEvent();
-
-        }
-        
-        protected override void ExitGame ()
+        protected override void ExitGame()
         {
             SoundManager.Instance?.PlaySoundByIndex(1, Vector3.zero);
-            
+
             UserManager.Instance?.SavePrivateDataPlayer();
 
-            base.ExitGame ();
+            base.ExitGame();
         }
         #endregion
 
-        //help function
         public bool IsMenuActive()
         {
             return WindowActive >= 0 || ConsoleWindowActive >= 0;
@@ -150,16 +134,19 @@ namespace Game
         {
             _cursorIsOverGameUi = value;
         }
-        
-        private void ClickEscapeEvent() {
-            if (consoleWindowActive == -1) {
-                if (windowActive == -1) {
-                    ExitGameConsoleWindow_Button ();
+
+        private void ClickEscapeEvent()
+        {
+            if (consoleWindowActive == -1)
+            {
+                if (windowActive == -1)
+                {
+                    ExitGameConsoleWindow_Button();
                 }
             }
         }
 
-        // Console windows
+        #region ConsoleWindows
         public void ShowMessageConsoleWindowOk(string value, UnityAction actionClick = null)
         {
             ConsoleWinMessage_SetTxt(value);
@@ -173,10 +160,10 @@ namespace Game
 
         public void ShowMessageConsoleWindowYesNo(string value, UnityAction actionYes)
         {
-            ConsoleWinYesNo_SetTxt (value);
-            ConsoleWinYesNo_SetYesAction (actionYes);
-            
-            ActivateConsoleWindow (9);
+            ConsoleWinYesNo_SetTxt(value);
+            ConsoleWinYesNo_SetYesAction(actionYes);
+
+            ActivateConsoleWindow(9);
         }
 
         public void ShowMessageConsoleWindowYesNo(string value, UnityAction actionYes, UnityAction actionNo)
@@ -187,8 +174,9 @@ namespace Game
 
             ActivateConsoleWindow(9);
         }
+        #endregion
 
-        //button action
+        #region ButtonAction
         public void RunLevel_Button()
         {
             if (useLevelListWindow)
@@ -208,9 +196,9 @@ namespace Game
         public void StopLevel_Button()
         {
             GameController.Instance?.StopLevel();
-            
+
             ActivateWindow(0);
-            
+
             SoundManager.Instance?.PlaySoundByIndex(1, Vector3.zero);
         }
 
@@ -219,13 +207,14 @@ namespace Game
             GameController.Instance?.PauseLevel();
 
             ShowMessageConsoleWindowYesNo("You want exit from game?", StopActiveLevel, ContinueActiveLevel);
-            
+
             SoundManager.Instance?.PlaySoundByIndex(1, Vector3.zero);
         }
 
         private void StopActiveLevel()
         {
-            if (GameController.Instance) {
+            if (GameController.Instance)
+            {
                 GameController.Instance.StopLevel();
 
                 if (GameController.Instance.MenuAndLevelsDivided)
@@ -243,8 +232,10 @@ namespace Game
             }
         }
 
-        public void ExitGameConsoleWindow_Button() {
-            ShowMessageConsoleWindowYesNo ("Do you want to Exit?", ExitGame);
+        public void ExitGameConsoleWindow_Button()
+        {
+            ShowMessageConsoleWindowYesNo("Do you want to Exit?", ExitGame);
         }
+        #endregion
     }
 }

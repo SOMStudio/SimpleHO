@@ -9,7 +9,7 @@ namespace Base.UI
     {
         [SerializeField] private Vector2 directionShift;
         [SerializeField] private float timeForShift = 0.4f;
-    
+
         private CanvasGroup _canvasGrope;
         private RectTransform _rectTransform;
 
@@ -21,7 +21,7 @@ namespace Base.UI
             base.Init();
 
             _canvasGrope = GetComponent<CanvasGroup>();
-        
+
             if (!_canvasGrope) throw new NullReferenceException();
 
             _rectTransform = GetComponent<RectTransform>();
@@ -29,14 +29,14 @@ namespace Base.UI
             if (IsOpen())
             {
                 _rectTransform.anchoredPosition = Vector2.zero;
-                
+
                 _canvasGrope.interactable = true;
                 _canvasGrope.blocksRaycasts = true;
             }
             else
             {
                 _rectTransform.anchoredPosition = directionShift;
-                
+
                 _canvasGrope.interactable = false;
                 _canvasGrope.blocksRaycasts = false;
             }
@@ -72,7 +72,7 @@ namespace Base.UI
                         .SetAutoKill(false);
                 else
                     _closeTween.Restart();
-            
+
                 _canvasGrope.interactable = false;
                 _canvasGrope.blocksRaycasts = false;
             }

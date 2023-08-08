@@ -11,20 +11,21 @@ namespace Game.GameData.DevScripts
 
         [Header("Level")]
         [SerializeField] private int activeLevel = -1;
-        [SerializeField] private int bunusForItem = 10;
+        [SerializeField] private int bonusForItem = 10;
 
-        [Header("Sound&Misuc")]
-        [SerializeField] private float defaulValume = 0.5f;
+        [Header("Sound&Music")]
+        [SerializeField] private float defaultVolume = 0.5f;
 
-        public float DelayelayForWinMessage => delayForWinMessage;
+        public float DelayForWinMessage => delayForWinMessage;
 
-        public int ActiveLevel {
-            get { return activeLevel; }
-            set { activeLevel = value; }
+        public int ActiveLevel
+        {
+            get => activeLevel;
+            set => activeLevel = value;
         }
 
-        public int BonusForItem => bunusForItem;
+        public int BonusForItem => bonusForItem;
 
-        public float DefaultValume => defaulValume;
+        public float DefaultVolume => defaultVolume;
     }
 }

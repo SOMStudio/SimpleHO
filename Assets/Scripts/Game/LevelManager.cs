@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Game
 {
     public class LevelManager : BaseLevelManager
-    {   
+    {
         [Header("Player Manager")]
         [SerializeField] private PlayerManager playerManager;
 
@@ -17,9 +17,9 @@ namespace Game
 
         [Header("Mask Manager")]
         [SerializeField] private MaskManager maskManager;
-		
-		[Header("Stop Watch")]
-		[SerializeField] private StopWatch levelStopWatch;
+
+        [Header("Stop Watch")]
+        [SerializeField] private StopWatch levelStopWatch;
 
         private GameDataTemplate _gameData;
         private GameLogicDataTemplate _gameLogicData;
@@ -27,8 +27,8 @@ namespace Game
 
         private LevelData _levelData;
 
-        private bool _startLevel = false;
-        private bool _pauseLevel = false;
+        private bool _startLevel;
+        private bool _pauseLevel;
 
         [System.NonSerialized] public static LevelManager Instance;
 
@@ -48,7 +48,7 @@ namespace Game
                 Destroy(this.gameObject);
             }
         }
-        
+
         private void Start()
         {
             InitLevel();
@@ -70,7 +70,7 @@ namespace Game
                     RunLevel(_gameData.Data.ActiveLevel);
             }
         }
-        
+
         #region OverrideMethods
         public override void RunLevel(int number = 0)
         {

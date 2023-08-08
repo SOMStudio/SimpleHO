@@ -12,12 +12,12 @@ namespace Base.Input
         private IMouseInputHandler mouseInputHandler;
         private Dictionary<string, UnityAction> actionMapKeyUp = new Dictionary<string, UnityAction>();
         private Dictionary<string, UnityAction> actionMapKeyDown = new Dictionary<string, UnityAction>();
-        
+
         public InputManager(InputBindings inputBindings)
         {
             this.inputBindings = inputBindings;
         }
-        
+
         public InputManager(InputBindings inputBindings, IMouseInputHandler mouseInputHandler)
         {
             this.inputBindings = inputBindings;
@@ -28,7 +28,7 @@ namespace Base.Input
         {
             actionMapKeyUp.Add(binding, action);
         }
-        
+
         public void AddActionToBindingKeyDown(string binding, UnityAction action)
         {
             actionMapKeyDown.Add(binding, action);

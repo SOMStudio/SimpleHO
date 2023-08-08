@@ -7,15 +7,15 @@ namespace Game.SaveSystem
 {
     public class PrefabSaveSystem : BasePrefabSaveSystem
     {
-        private bool _mutedVolume = false;
-        private float _soundVolumeSave = 0.0f;
-        private float _musicVolumeSave = 0.0f;
+        private bool _mutedVolume;
+        private float _soundVolumeSave;
+        private float _musicVolumeSave;
 
         public event UnityAction<bool> MuteUnmuteVolumeEvent;
     
         [System.NonSerialized] public static PrefabSaveSystem Instance;
-    
-        void Awake()
+
+        private void Awake()
         {
             if (!Instance)
             {

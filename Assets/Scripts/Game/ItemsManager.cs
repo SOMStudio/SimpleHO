@@ -15,8 +15,8 @@ namespace Game
 
         private LevelManager levelManager;
 
-        private bool _control = false;
-        
+        private bool _control;
+
         private void Start()
         {
             if (!levelManager)
@@ -37,7 +37,7 @@ namespace Game
             float timeMove = 1.0f;
 
             if (GameController.Instance)
-                timeMove = GameController.Instance.GameData.Data.DelayelayForWinMessage;
+                timeMove = GameController.Instance.GameData.Data.DelayForWinMessage;
 
             particles[index].gameObject
                 .DOMovePath(pathes[index], timeMove)
@@ -108,12 +108,12 @@ namespace Game
             value.ShowItemObject();
         }
 
-        public void SetNameItem(int index, string name)
+        public void SetNameItem(int index, string setName)
         {
-            items[index].SetItemText(name);
+            items[index].SetItemText(setName);
         }
 
-        public bool IsControll()
+        public bool IsControl()
         {
             return _control;
         }

@@ -4,12 +4,13 @@ using UnityEngine;
 
 namespace Base.Coroutines
 {
-	public class CoroutineInstance : MonoBehaviour 
+	public class CoroutineInstance : MonoBehaviour
 	{
 		public IEnumerator Run(Func<IEnumerator> runner, bool selfDestruct = true)
 		{
 			yield return StartCoroutine(runner.Invoke());
-			Destroy(gameObject);
+			
+			if (selfDestruct) Destroy(gameObject);
 		}
 	}
 }

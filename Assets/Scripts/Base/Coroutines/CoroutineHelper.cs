@@ -11,6 +11,6 @@ namespace Base.Coroutines
 			GameObject runner = new GameObject("CoroutineRunner");
 			CoroutineInstance coroutineInstance = runner.AddComponent<CoroutineInstance>();
 			coroutineInstance.StartCoroutine(coroutineInstance.Run(coroutine, selfDestruct));
-		}		
+		}
 	}
 }

@@ -10,7 +10,7 @@ namespace Base.Resource.Interfaces
     void Add(T value);
     void Reduce(T value);
 
-    void AddListener(UnityAction<T> value);
-    void RemoveListener(UnityAction<T> value);
+    void AddListener(UnityAction<T> listener);
+    void RemoveListener(UnityAction<T> listener);
     }
 }

@@ -5,12 +5,11 @@ namespace Base.Utility
 	[AddComponentMenu("Utility/Window Open-Close")]
 	public class WindowOpenClose : MonoBehaviour
 	{
-		[SerializeField]
-		private bool defaultOpen = false;
-		
-		private bool _isOpen = false;
+		[SerializeField] private bool defaultOpen;
 
-		void Awake()
+		private bool _isOpen;
+
+		private void Awake()
 		{
 			Init();
 		}
@@ -19,7 +18,7 @@ namespace Base.Utility
 		{
 			_isOpen = defaultOpen;
 		}
-		
+
 		public void Click()
 		{
 			if (IsOpen())
@@ -52,6 +51,5 @@ namespace Base.Utility
 		{
 			return _isOpen;
 		}
-		
 	}
 }

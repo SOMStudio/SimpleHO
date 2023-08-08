@@ -47,7 +47,6 @@ namespace Base
 		}
 
 		#region Activators
-		//activators
 		private void WindowActivator_Open(int number)
 		{
 			if (number < windowActivator.Length)
@@ -79,8 +78,7 @@ namespace Base
 				}
 			}
 		}
-
-		//blocker windows activator 
+		
 		private void WindowBlocker_Open()
 		{
 			if (windowBlocker)
@@ -269,7 +267,6 @@ namespace Base
 			ConsoleWindowBlocker_Close();
 		}
 		
-		//console Message
 		protected void ConsoleWinMessage_SetTxt(string val)
 		{
 			consoleWinMessageTextHead.text = TextHelp.SpecTextChar(val);
@@ -293,8 +290,7 @@ namespace Base
 			
 			ConsoleWinMessage_ClearOkAction();
 		}
-
-		//console YesNo
+		
 		protected void ConsoleWinYesNo_SetTxt(string val)
 		{
 			consoleWinYesNoTextHead.text = TextHelp.SpecTextChar(val);
@@ -364,7 +360,6 @@ namespace Base
 			}
 		}
 		
-		//game window Advice
 		private void CloseAdviceGameWindow()
 		{
 			gameWindowAdvice.Close();

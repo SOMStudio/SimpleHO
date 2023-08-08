@@ -49,32 +49,31 @@ namespace Game
         public override void PlayerDestroyed()
         {
             base.PlayerDestroyed();
-            
+
             StopLevel();
         }
 
         public override void EnemyDestroyed()
         {
             base.EnemyDestroyed();
-            
-            
+
+
         }
 
         public override void BossDestroyed()
         {
             base.BossDestroyed();
-            
+
             StopLevel();
         }
 
         public override void RunLevel(int number = 0)
         {
-            //base.RunLevel(number); // change logic work
-
             if (GameData.Data.ActiveLevel == number)
             {
                 levelManager?.RunLevel();
-            } else
+            }
+            else
             {
                 string nameScene = LevelListData.Data[number].NameScene;
                 StartScene(nameScene);
@@ -104,7 +103,7 @@ namespace Game
                     action = () => MenuManager.Instance?.ActivateWindow(0);
 
                 MenuManager.Instance?.ShowMessageConsoleWindowOk("Game over!", action);
-                
+
                 PlayerDestroyed();
             }
         }
@@ -114,7 +113,7 @@ namespace Game
             if (percentage == 100)
             {
                 MenuManager.Instance?.ShowAdviceGameWindow("You so cool!");
-                
+
                 EnemyDestroyed();
             }
         }
@@ -123,7 +122,7 @@ namespace Game
         {
             if (percentage == 100)
             {
-                Invoke(nameof(WinMessage), gameData.Data.DelayelayForWinMessage);
+                Invoke(nameof(WinMessage), gameData.Data.DelayForWinMessage);
 
                 BossDestroyed();
             }

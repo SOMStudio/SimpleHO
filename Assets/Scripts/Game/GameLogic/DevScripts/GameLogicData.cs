@@ -34,7 +34,7 @@ namespace Game.GameLogic.DevScripts
         {
             GameData = gameDataSet;
         }
-        
+
         public void InitLevelRules(LevelManager levelManager, LevelData levelDataNew = null)
         {
             LevelManager = levelManager;
@@ -87,7 +87,8 @@ namespace Game.GameLogic.DevScripts
             if (levelManager.ItemsManager.ItemsTaked())
             {
                 levelManager.LevelStopWatch.Pause();
-            } else
+            }
+            else
             {
                 GameController.Instance?.CheckLocalTask(100);
             }

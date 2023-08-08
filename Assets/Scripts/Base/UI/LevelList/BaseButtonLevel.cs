@@ -15,9 +15,9 @@ namespace Base.UI.LevelList
         public virtual void Init(int numberLevel, string nameLevel = "")
         {
             levelNumber = numberLevel;
-            LevelName = string.IsNullOrEmpty(nameLevel) ? (numberLevel+1).ToString() : nameLevel;
+            LevelName = string.IsNullOrEmpty(nameLevel) ? (numberLevel + 1).ToString() : nameLevel;
         }
-        
+
         public int LevelNumber
         {
             get => levelNumber;

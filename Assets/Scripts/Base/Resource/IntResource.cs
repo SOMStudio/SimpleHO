@@ -10,11 +10,11 @@ namespace Base.Resource
     {
         [SerializeField] private int value;
         [Header("Events")]
-        [SerializeField] private IntEvent changeEvent; 
-        
-        public void Set(int value)
+        [SerializeField] private IntEvent changeEvent;
+
+        public void Set(int newValue)
         {
-            this.value = value;
+            value = newValue;
         }
 
         public int Get()
@@ -22,45 +22,47 @@ namespace Base.Resource
             return value;
         }
 
-        public void Add(int value)
+        public void Add(int newValue)
         {
-            this.value += value;
-            
-            changeEvent?.Invoke(this.value);
+            value += newValue;
+
+            changeEvent?.Invoke(value);
         }
 
-        public void Reduce(int value)
+        public void Reduce(int newValue)
         {
-            if (this.value > 0)
+            if (value > 0)
             {
-                this.value -= value;
-                if (this.value < 0)
+                value -= newValue;
+                if (value < 0)
                 {
-                    this.value = 0;
+                    value = 0;
                 }
-                
-                changeEvent?.Invoke(this.value);
+
+                changeEvent?.Invoke(value);
             }
         }
 
-        public void Change(int value)
+        public void Change(int newValue)
         {
-            this.value = value;
-            
-            changeEvent?.Invoke(this.value);
+            value = newValue;
+
+            changeEvent?.Invoke(value);
         }
 
-        public void AddListener(UnityAction<int> value)
+        public void AddListener(UnityAction<int> listener)
         {
-            changeEvent.AddListener(value);
+            changeEvent.AddListener(listener);
         }
 
-        public void RemoveListener(UnityAction<int> value)
+        public void RemoveListener(UnityAction<int> listener)
         {
-            changeEvent.RemoveListener(value);
+            changeEvent.RemoveListener(listener);
         }
     }
 
     [Serializable]
-    public class IntEvent : UnityEvent<int>{}
+    public class IntEvent : UnityEvent<int>
+    {
+    }
 }

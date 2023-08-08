@@ -13,9 +13,6 @@ namespace Base.Utility
 		protected GameObject myGO;
 		protected Rigidbody myBody;
 
-		protected Vector3 tempVEC;
-		protected Transform tempTR;
-
 		private void Start()
 		{
 			Init();

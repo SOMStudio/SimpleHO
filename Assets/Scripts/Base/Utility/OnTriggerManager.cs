@@ -8,7 +8,7 @@ namespace Base.Utility
     {
         public ColliderEvent onTriggerEnterEvent;
         public ColliderEvent onTriggerExitEvent;
-        
+
         private void OnTriggerEnter(Collider other)
         {
             onTriggerEnterEvent?.Invoke(other);
@@ -18,8 +18,10 @@ namespace Base.Utility
         {
             onTriggerExitEvent?.Invoke(other);
         }
-        
+
         [Serializable]
-        public class ColliderEvent : UnityEvent<Collider>{}
+        public class ColliderEvent : UnityEvent<Collider>
+        {
+        }
     }
 }

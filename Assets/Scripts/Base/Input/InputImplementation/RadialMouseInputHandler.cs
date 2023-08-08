@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Base.Input.InputImplementation
 {
-	public class RadialMouseInputHandler : IMouseInputHandler 
+	public class RadialMouseInputHandler : IMouseInputHandler
 	{
 		public Vector2 GetRawPosition()
 		{

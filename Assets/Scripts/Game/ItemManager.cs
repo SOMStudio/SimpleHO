@@ -38,7 +38,7 @@ public class ItemManager : ExtendedCustomMonoBehaviour
         {
             onItemMouseDown = false;
 
-            if (itemsManager.IsControll())
+            if (itemsManager.IsControl())
             {
                 itemTaked = true;
 

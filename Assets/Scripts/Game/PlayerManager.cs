@@ -12,14 +12,14 @@ namespace Game
     {
         [Header("Main")]
         [SerializeField] private Transform maskView;
-        
-        private bool _control = false;
-        private bool _followCursor = false;
+
+        private bool _control;
+        private bool _followCursor;
 
         private IInputManager _inputManager;
 
         public int Id => id;
-        
+
         private void Update()
         {
             CheckForInput();
@@ -28,7 +28,7 @@ namespace Game
         protected override void Init()
         {
             base.Init();
-            
+
             SetId(myGO.GetHashCode());
 
             _inputManager = new InputManager(new SampleBindings());
@@ -78,7 +78,7 @@ namespace Game
         public void Damage(int value)
         {
             UserManager.Instance?.ReduceHealth(value);
-            
+
             SoundManager.Instance?.PlaySoundByIndex(5, myTransform.position);
         }
     }

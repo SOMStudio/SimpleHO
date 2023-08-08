@@ -9,7 +9,7 @@ namespace Base.Sound
 		[Header("Main")]
 		[SerializeField] private string gamePrefsName = "DefaultGame";
 		[SerializeField] protected AudioClip[] gameSounds;
-		
+
 		private List<SoundObject> soundObjectList;
 		private SoundObject tempSoundObj;
 
@@ -17,9 +17,8 @@ namespace Base.Sound
 		[SerializeField] [Range(0, 1)] private float volume = 0.5f;
 
 		[System.NonSerialized] public static SoundManager Instance;
-
-		// main event
-		void Awake()
+		
+		private void Awake()
 		{
 			if (Instance == null)
 			{
@@ -36,7 +35,7 @@ namespace Base.Sound
 			}
 		}
 
-		void Start()
+		private void Start()
 		{
 			if (soundObjectList == null)
 			{
@@ -44,11 +43,11 @@ namespace Base.Sound
 			}
 		}
 
-		void Init()
+		private void Init()
 		{
 			DontDestroyOnLoad(this.gameObject);
 
-			string stKey = string.Format("{0}_SFXVol", gamePrefsName);
+			string stKey = $"{gamePrefsName}_SFXVol";
 			if (PlayerPrefs.HasKey(stKey))
 			{
 				volume = PlayerPrefs.GetFloat(stKey);
@@ -81,7 +80,7 @@ namespace Base.Sound
 				Init();
 			}
 
-			string stKey = string.Format("{0}_SFXVol", gamePrefsName);
+			string stKey = $"{gamePrefsName}_SFXVol";
 			volume = PlayerPrefs.GetFloat(stKey);
 
 			for (int i = 0; i < soundObjectList.Count; i++)

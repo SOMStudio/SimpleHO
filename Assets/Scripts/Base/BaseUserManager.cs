@@ -112,8 +112,6 @@ namespace Base
 				health.Set(value);
 		}
 
-		//===============================
-
 		public bool GetIsFinished()
 		{
 			return isFinished;

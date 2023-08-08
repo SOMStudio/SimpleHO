@@ -8,7 +8,7 @@ namespace Base.UI
     public class WindowOpenCloseWithFade : WindowOpenClose
     {
         [SerializeField] private float timeForFade = 0.4f;
-    
+
         private CanvasGroup _canvasGrope;
 
         private Tweener _openTween;
@@ -19,7 +19,7 @@ namespace Base.UI
             base.Init();
 
             _canvasGrope = GetComponent<CanvasGroup>();
-        
+
             if (!_canvasGrope) throw new NullReferenceException();
 
             if (IsOpen())
@@ -48,7 +48,7 @@ namespace Base.UI
                         .SetAutoKill(false);
                 else
                     _openTween.Restart();
-                
+
                 _canvasGrope.interactable = true;
                 _canvasGrope.blocksRaycasts = true;
             }
