@@ -3,7 +3,7 @@ Simple Hidden Objects
 
 ## Task:
 - Make the basic mechanics of the game in the genre “Hidden objects”:
-https://apps.apple.com/us/app/find-hidden-objects-in-picture/id1465691296
+https://play.google.com/store/search?q=Hidden%20objects&c=apps
 
 Assemble a game scene with items to be found.
 Make the top panel with items to search for in the game scene.
