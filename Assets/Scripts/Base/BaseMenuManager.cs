@@ -94,8 +94,7 @@ namespace Base
 				windowBlocker.Close();
 			}
 		}
-
-		//blocker console Windows activator
+		
 		private void ConsoleWindowBlocker_Open()
 		{
 			if (consoleWindowBlocker)
@@ -114,67 +113,31 @@ namespace Base
 		#endregion
 
 		#region Events
-		protected virtual void ActivateWindowEvent()
-		{
+		protected virtual void ActivateWindowEvent() { }
 
-		}
+		protected virtual void DisActivateWindowEvent() { }
 
-		protected virtual void DisActivateWindowEvent()
-		{
+		protected virtual void ChangeWindowEvent(int number) { }
 
-		}
+		protected virtual void ActivateConsoleWEvent() { }
 
-		protected virtual void ChangeWindowEvent(int number)
-		{
+		protected virtual void DisActivateConsoleWEvent() { }
 
-		}
-
-		protected virtual void ActivateConsoleWEvent()
-		{
-
-		}
-
-		protected virtual void DisActivateConsoleWEvent()
-		{
-
-		}
-
-		protected virtual void ChangeConsoleWEvent(int number)
-		{
-
-		}
+		protected virtual void ChangeConsoleWEvent(int number) { }
 		
-		protected virtual void ActivateGameWEvent()
-		{
+		protected virtual void ActivateGameWEvent() { }
 
-		}
+		protected virtual void DisActivateGameWEvent() { }
 
-		protected virtual void DisActivateGameWEvent()
-		{
+		protected virtual void ChangeGameWEvent(bool isActive) { }
 
-		}
-
-		protected virtual void ChangeGameWEvent(bool isActive)
-		{
-
-		}
-
-		protected virtual void ActivateAdviceGameWEvent()
-		{
-			
-		}
+		protected virtual void ActivateAdviceGameWEvent() { }
 		
-		protected virtual void DisActivateAdviceGameWEvent()
-		{
-			
-		}
+		protected virtual void DisActivateAdviceGameWEvent() { }
 		#endregion
 
 		#region Windows
-		public int WindowActive
-		{
-			get { return windowActive; }
-		}
+		public int WindowActive => windowActive;
 
 		public void ActivateWindow(int number)
 		{
@@ -220,10 +183,7 @@ namespace Base
 		#endregion
 
 		#region ConsoleWindows
-		public int ConsoleWindowActive
-		{
-			get { return consoleWindowActive; }
-		}
+		public int ConsoleWindowActive => consoleWindowActive;
 
 		public void ActivateConsoleWindow(int number)
 		{

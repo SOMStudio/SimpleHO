@@ -56,8 +56,6 @@ namespace Game
         public override void EnemyDestroyed()
         {
             base.EnemyDestroyed();
-
-
         }
 
         public override void BossDestroyed()

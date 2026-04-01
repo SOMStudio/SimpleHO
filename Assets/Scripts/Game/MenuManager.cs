@@ -158,7 +158,7 @@ namespace Game
             ActivateConsoleWindow(8);
         }
 
-        public void ShowMessageConsoleWindowYesNo(string value, UnityAction actionYes)
+        private void ShowMessageConsoleWindowYesNo(string value, UnityAction actionYes)
         {
             ConsoleWinYesNo_SetTxt(value);
             ConsoleWinYesNo_SetYesAction(actionYes);
@@ -166,7 +166,7 @@ namespace Game
             ActivateConsoleWindow(9);
         }
 
-        public void ShowMessageConsoleWindowYesNo(string value, UnityAction actionYes, UnityAction actionNo)
+        private void ShowMessageConsoleWindowYesNo(string value, UnityAction actionYes, UnityAction actionNo)
         {
             ConsoleWinYesNo_SetTxt(value);
             ConsoleWinYesNo_SetYesAction(actionYes);

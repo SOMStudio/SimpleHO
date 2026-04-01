@@ -1,84 +1,86 @@
 ﻿using Base.Utility;
-using Game;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemManager : ExtendedCustomMonoBehaviour
+namespace Game
 {
-    [Header("Main")]
-    [SerializeField] private GameObject itemObject;
-    [SerializeField] private GameObject itemShadow;
-    [SerializeField] private GameObject itemClickArea;
-    [SerializeField] private Text itemText;
-
-    private bool itemTaked = false;
-    private bool onItemMouseDown = false;
-
-    [Header("Items Manager")]
-    [SerializeField] private ItemsManager itemsManager;
-
-    public bool IsItemTake => itemTaked;
-
-    public void OnItemMouseDown()
+    public class ItemManager : ExtendedCustomMonoBehaviour
     {
-        onItemMouseDown = true;
-    }
+        [Header("Main")]
+        [SerializeField] private GameObject itemObject;
+        [SerializeField] private GameObject itemShadow;
+        [SerializeField] private GameObject itemClickArea;
+        [SerializeField] private Text itemText;
 
-    public void OnItemMouseExit()
-    {
-        if (onItemMouseDown)
+        private bool itemTaked;
+        private bool onItemMouseDown;
+
+        [Header("Items Manager")]
+        [SerializeField] private ItemsManager itemsManager;
+
+        public bool IsItemTake => itemTaked;
+
+        public void OnItemMouseDown()
         {
-            onItemMouseDown = false;
+            onItemMouseDown = true;
         }
-    }
 
-    public void OnItemMouseUp()
-    {
-        if (onItemMouseDown)
+        public void OnItemMouseExit()
         {
-            onItemMouseDown = false;
-
-            if (itemsManager.IsControl())
+            if (onItemMouseDown)
             {
-                itemTaked = true;
-
-                itemsManager.TakeItem(this);
+                onItemMouseDown = false;
             }
         }
-    }
 
-    public void ShowItemObject()
-    {
-        itemObject.SetActive(true);
-    }
+        public void OnItemMouseUp()
+        {
+            if (onItemMouseDown)
+            {
+                onItemMouseDown = false;
 
-    public void HideItemObject()
-    {
-        itemObject.SetActive(false);
-    }
+                if (itemsManager.IsControl())
+                {
+                    itemTaked = true;
 
-    public void ShowItemShadow()
-    {
-        itemShadow.SetActive(true);
-    }
+                    itemsManager.TakeItem(this);
+                }
+            }
+        }
 
-    public void HideItemShadow()
-    {
-        itemShadow.SetActive(false);
-    }
+        public void ShowItemObject()
+        {
+            itemObject.SetActive(true);
+        }
 
-    public void ShowClickArea()
-    {
-        itemClickArea.SetActive(true);
-    }
+        public void HideItemObject()
+        {
+            itemObject.SetActive(false);
+        }
 
-    public void HideClickArea()
-    {
-        itemClickArea.SetActive(false);
-    }
+        public void ShowItemShadow()
+        {
+            itemShadow.SetActive(true);
+        }
 
-    public void SetItemText(string value)
-    {
-        itemText.text = value;
+        public void HideItemShadow()
+        {
+            itemShadow.SetActive(false);
+        }
+
+        public void ShowClickArea()
+        {
+            itemClickArea.SetActive(true);
+        }
+
+        public void HideClickArea()
+        {
+            itemClickArea.SetActive(false);
+        }
+
+        public void SetItemText(string value)
+        {
+            itemText.text = value;
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Base.Coroutines
 {
-	public class CoroutineHelper
+	public static class CoroutineHelper
 	{
 		public static void RunCoroutine(Func<IEnumerator> coroutine, bool selfDestruct = true)
 		{

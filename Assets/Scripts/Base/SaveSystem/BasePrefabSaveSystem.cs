@@ -27,7 +27,7 @@ namespace Base.SaveSystem
         private int detailLevels = 6;
         private bool needSaveOptions = false;
 
-        void Start()
+        public void Start()
         {
             RestoreOptionsPref();
             InitEvents();

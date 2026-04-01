@@ -51,10 +51,7 @@ namespace Game.SaveSystem
                 ChangeMusicValueEvent += MusicManager.Instance.UpdateVolume;
         }
 
-        public bool MutedVolume
-        {
-            get { return _mutedVolume; }
-        }
+        public bool MutedVolume => _mutedVolume;
 
         private void MuteVolumeRestore()
         {

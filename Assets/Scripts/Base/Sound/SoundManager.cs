@@ -48,14 +48,7 @@ namespace Base.Sound
 			DontDestroyOnLoad(this.gameObject);
 
 			string stKey = $"{gamePrefsName}_SFXVol";
-			if (PlayerPrefs.HasKey(stKey))
-			{
-				volume = PlayerPrefs.GetFloat(stKey);
-			}
-			else
-			{
-				volume = 0.5f;
-			}
+			volume = PlayerPrefs.HasKey(stKey) ? PlayerPrefs.GetFloat(stKey) : 0.5f;
 
 			soundObjectList = new List<SoundObject>();
 

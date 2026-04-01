@@ -5,11 +5,11 @@ namespace Base.Input.InputImplementation
 {
     public class InputBindings
     {
-        protected Dictionary<string, KeyCode> keyBindings = new Dictionary<string, KeyCode>();
+        protected Dictionary<string, KeyCode> keyBindings = new();
 
         public Dictionary<string, KeyCode> KeyBindings => keyBindings;
 
-        public InputBindings()
+        protected InputBindings()
         {
             SetupBindings();
         }

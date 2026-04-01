@@ -35,14 +35,14 @@ namespace Game.GameLogic.DevScripts
             GameData = gameDataSet;
         }
 
-        public void InitLevelRules(LevelManager levelManager, LevelData levelDataNew = null)
+        public void InitLevelRules(LevelManager levelManagerSet, LevelData levelDataNew = null)
         {
-            LevelManager = levelManager;
+            LevelManager = levelManagerSet;
 
             if (levelDataNew != null)
                 LevelData = levelDataNew;
 
-            CoroutineHelper.RunCoroutine(InitLevel, true);
+            CoroutineHelper.RunCoroutine(InitLevel);
         }
 
         private IEnumerator InitLevel()

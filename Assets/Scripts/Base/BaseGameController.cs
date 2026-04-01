@@ -49,17 +49,14 @@ namespace Base
 		
 		public virtual void PlayerDestroyed()
 		{
-
 		}
 
 		public virtual void EnemyDestroyed()
 		{
-
 		}
 
 		public virtual void BossDestroyed()
 		{
-
 		}
 
 		public virtual void StartScene(string sceneName)
